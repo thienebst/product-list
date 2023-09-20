@@ -1,6 +1,6 @@
 import { Box, Container } from "@mui/material"
 import './App.css'
-import ProductList from "./product-list/components/Product"
+import ProductList from "./product-list/components/ProductList"
 import ThemeProviderWrapper from './theme/ThemeProvider'
 function App() {
  

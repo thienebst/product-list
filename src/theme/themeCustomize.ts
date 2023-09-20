@@ -19,7 +19,7 @@ export const themeCustomize = createTheme({
       1: '#353C49',
       4: '#D9E0E8',
       6: '#F2F4F6',
-      7: 'F8F8F9',
+      7: '#F8F8F9',
       8: '#FFFFFF'
     },
     text: {

@@ -14,7 +14,7 @@ const SearchWrapper = styled(Box)<{ value: string; }>(({ value }) => ({
   borderRadius: '50px',
   backgroundColor: value ? '#FFFFFF' : '#F8F8F9',
   '&,.MuiInputBase-root': {
-    color: value ? '#353C49' : '#D9E0E8',
+    color: value ? '#353C49' : '#B1B8C0',
   },
   border: `1px solid ${value ? '#353C49' : '#D9E0E8'}`,
   '&:hover': {

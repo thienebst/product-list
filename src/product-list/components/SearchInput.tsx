@@ -12,17 +12,20 @@ const SearchWrapper = styled(Box)<{ value: string; }>(({ value }) => ({
   width: '280px',
   height: '42px',
   borderRadius: '50px',
+  backgroundColor: value ? '#FFFFFF' : '#F8F8F9',
   '&,.MuiInputBase-root': {
     color: value ? '#353C49' : '#D9E0E8',
   },
   border: `1px solid ${value ? '#353C49' : '#D9E0E8'}`,
   '&:hover': {
     border: '1px solid #D1B8FA',
+    backgroundColor: '#FFFFFF'
   },
   '&:focus-within': {
     border: '1px solid #6713EF',
     '&,.MuiInputBase-root': {
       color: '#353C49',
+      backgroundColor: '#FFFFFF'
     }
   }
 }));

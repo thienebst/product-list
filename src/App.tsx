@@ -1,16 +1,20 @@
-import './App.css';
-import ProductList from "./product-list/components/ProductList";
-import { Container, Box } from "@mui/material";
-
+import { Box, Container } from "@mui/material"
+import './App.css'
+import ProductList from "./product-list/components/Product"
+import ThemeProviderWrapper from './theme/ThemeProvider'
 function App() {
+ 
   return (
-    <div className="App">
+    <ThemeProviderWrapper>
+       <div className="App">
       <Container >
         <Box display="flex" justifyContent="center" alignItems="center">
           <ProductList />
         </Box>
       </Container>
     </div>
+    </ThemeProviderWrapper>
+    
   );
 }
 

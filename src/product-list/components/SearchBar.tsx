@@ -1,11 +1,11 @@
-import ClearIcon from '@mui/icons-material/Clear'
-import SearchIcon from '@mui/icons-material/Search'
-import { Box, Button, IconButton, InputBase } from "@mui/material"
-import { styled } from '@mui/material/styles'
-import { useState } from 'react'
+import ClearIcon from '@mui/icons-material/Clear';
+import SearchIcon from '@mui/icons-material/Search';
+import { Box, IconButton, InputBase } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import useSearchTextStore from "../hooks/searchTextState";
 
 
-const SearchWrapper = styled(Box)<{ value: string }>(({ value, theme }) => ({
+const SearchWrapper = styled(Box)<{ value: string; }>(({ value, theme }) => ({
   display: 'flex',
   padding: '0 16px',
   alignItems: 'center',
@@ -28,9 +28,9 @@ const SearchWrapper = styled(Box)<{ value: string }>(({ value, theme }) => ({
       backgroundColor: theme.colors.neutral[8]
     }
   }
-}))
+}));
 
-const ButtonIconWrapper = styled(IconButton)(({theme})=>({
+const ButtonIconWrapper = styled(IconButton)(({ theme }) => ({
   width: 24,
   height: 24,
   '&:hover': {
@@ -43,9 +43,9 @@ const ButtonIconWrapper = styled(IconButton)(({theme})=>({
     backgroundColor: theme.colors.neutral[8],
     border: `2px solid ${theme.colors.primary[30]}`
   }
-}))
+}));
 
-const ButtonWrapper = styled('button')(({theme})=>({ 
+const ButtonWrapper = styled('button')(({ theme }) => ({
   width: 76,
   height: 42,
   borderRadius: 8,
@@ -57,41 +57,42 @@ const ButtonWrapper = styled('button')(({theme})=>({
     backgroundColor: theme.colors.neutral[6]
   },
   '&:active': {
-    backgroundColor: `${theme.colors.neutral[6]}`, 
+    backgroundColor: theme.colors.neutral[7],
   },
   '&:focus': {
     backgroundColor: theme.colors.neutral[8],
     border: `2px solid ${theme.colors.primary[30]}`
   }
-}))
+}));
 const SearchBar = () => {
-  const [value, setValue] = useState('')
-  const handleChange = (event: any) => {
-    setValue(event.target.value)
-  }
-  const handleClearInput = (event: any) => {
-    setValue('')
-  }
-
+  const { searchText, setSearchText } = useSearchTextStore(state => state);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+  };
+  const handleClearInput = () => {
+    setSearchText('');
+  };
   return (
     <Box display={'flex'}>
-      <SearchWrapper value={value}>
+      <SearchWrapper value={searchText}>
         <SearchIcon />
         <InputBase
           placeholder="Search"
-          value={value}
+          value={searchText}
           onChange={handleChange}
           sx={{ width: '100%', paddingLeft: 1 }}
         />
-        {value &&
+        {searchText &&
           <ButtonIconWrapper  >
-            <ClearIcon sx={{width: 16, height: 16}} onClick={handleClearInput} />
+            <ClearIcon sx={{ width: 16, height: 16 }} onClick={handleClearInput} />
           </ButtonIconWrapper>
         }
       </SearchWrapper>
-      <ButtonWrapper  sx={{marginLeft: 1}}>Cancel</ButtonWrapper>
-    </Box>
-  )
-}
 
-export default SearchBar
+
+      {searchText && <ButtonWrapper sx={{ marginLeft: 1 }} onClick={handleClearInput}>Cancel</ButtonWrapper>}
+    </Box>
+  );
+};
+
+export default SearchBar;

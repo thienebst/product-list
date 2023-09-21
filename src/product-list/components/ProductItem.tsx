@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { styled } from '@mui/material/styles'
-import { Box, InputBase } from "@mui/material"
+import { Box, InputBase } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import { useState } from 'react';
+import { Product } from "../model";
 
 const ProductStyle = styled(Box)(({ theme }) => ({
   borderRadius: 8,
@@ -8,7 +9,7 @@ const ProductStyle = styled(Box)(({ theme }) => ({
   '&:hover': {
     border: `1px solid ${theme.colors.primary[30]}`
   }
-}))
+}));
 const InputStyle = styled(InputBase)(({ theme }) => ({
   maxHeight: 32,
   padding: '6px 8px',
@@ -27,25 +28,30 @@ const InputStyle = styled(InputBase)(({ theme }) => ({
       backgroundColor: theme.colors.neutral[8]
     }
   }
-}))
-const Product = () => {
-  const [name, setName] = useState('Iphonex')
+}));
+
+interface Props {
+  data: Product;
+}
+const ProductItem: React.FC<Props> = ({ data }) => {
+  const { title, price, images } = data;
+  const [name, setName] = useState(title);
 
   const handleChangeName = (e: any) => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+  };
   return (
     <ProductStyle display='flex' alignItems='center'>
-      <img width={72} height={71} style={{ borderRadius: 8 }} src="https://mui.com/static/images/cards/live-from-space.jpg" alt="" />
+      <img width={72} height={71} style={{ borderRadius: 8 }} src={images[0]} alt="" />
       <Box marginLeft={1} height={'58px'} width={'100%'}>
         <InputStyle
           value={name}
           onChange={handleChangeName}
         />
-        <Box padding={'6px 8px'} fontWeight={400} fontSize={14}>$1.200</Box>
+        <Box padding={'6px 8px'} fontWeight={400} fontSize={14}>${price}</Box>
       </Box>
     </ProductStyle>
-  )
-}
+  );
+};
 
-export default Product
+export default ProductItem;

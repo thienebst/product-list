@@ -5,13 +5,35 @@ import SearchInput from "./SearchBar";
 import useQueryCategories from "../hooks/useQueryCategories";
 import useQueryProducts from "../hooks/useQueryProducts";
 import { Product } from "../model";
+
 const Divider = styled(Box)(({ theme }) => ({
   borderTop: `1px dashed  ${theme.colors.neutral[4]}`,
   width: '100%',
   marginTop: 2,
   height: 1,
 }));
+const ContainCategoriesStyle = styled(Box)(({ theme }) => ({
+  height: '710px',
+  overflow: 'auto',
+  '&::-webkit-scrollbar': {
+    width: 4,
+    backgroundColor: theme.colors.neutral[7],
+    borderRadius: 4
+  },
+  '&::-webkit-scrollbar-thumb': {
+    width: 4,
+    backgroundColor: theme.colors.neutral[4],
+    borderRadius: 4,
+    height: 314
+  },
+  '&::-webkit-scrollbar-thumb:hover': {
+    width: 4,
+    backgroundColor: theme.colors.neutral[3],
+    borderRadius: 4,
+    height: 314
+  }
 
+}));
 const ProductList = () => {
   const { data: categories = [] } = useQueryCategories();
   const { products = [] } = useQueryProducts();
@@ -28,9 +50,9 @@ const ProductList = () => {
         </Box>
         <Divider />
       </Box>
-      <Box overflow={'auto'} height={710}>
+      <ContainCategoriesStyle>
         {categories.map((item) => <Categories name={item} products={getProductByCategory(item)} />)}
-      </Box>
+      </ContainCategoriesStyle>
     </Box>
   );
 };

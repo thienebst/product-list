@@ -14,6 +14,7 @@ const InputStyle = styled(InputBase)(({ theme }) => ({
   maxHeight: 32,
   padding: '6px 8px',
   width: '100%',
+  fontWeight: 600,
   borderRadius: 8,
   '&:hover': {
     backgroundColor: theme.colors.neutral[7]
@@ -29,6 +30,15 @@ const InputStyle = styled(InputBase)(({ theme }) => ({
     }
   }
 }));
+
+const PriceStyle = styled(Box)(({ theme }) => ({
+  fontWeight: 400,
+  fontSize: 14,
+  padding: '6px 8px',
+  color: theme.colors.text[1]
+}));
+
+
 
 interface Props {
   data: Product;
@@ -48,7 +58,7 @@ const ProductItem: React.FC<Props> = ({ data }) => {
           value={name}
           onChange={handleChangeName}
         />
-        <Box padding={'6px 8px'} fontWeight={400} fontSize={14}>${price}</Box>
+        <PriceStyle >$ {price}</PriceStyle>
       </Box>
     </ProductStyle>
   );

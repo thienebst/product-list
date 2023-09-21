@@ -1,8 +1,8 @@
 import { Box, Container } from "@mui/material";
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
-import ProductList from "./product-list/components/ProductList";
+import ProductList from "./product-list";
 import ThemeProviderWrapper from './theme/ThemeProvider';
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 
 const queryClient = new QueryClient();
 

@@ -1,7 +1,8 @@
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
-import { Box, IconButton, InputBase } from "@mui/material";
+import { Box, InputBase } from "@mui/material";
 import { styled } from '@mui/material/styles';
+
 import useSearchTextStore from "../hooks/searchTextState";
 
 
@@ -30,19 +31,26 @@ const SearchWrapper = styled(Box)<{ value: string; }>(({ value, theme }) => ({
   }
 }));
 
-const ButtonIconWrapper = styled(IconButton)(({ theme }) => ({
+const ButtonIconWrapper = styled('button')(({ theme }) => ({
   width: 24,
   height: 24,
+  borderRadius: 15,
+  marginLeft: 5,
+  padding: 4,
+  color: theme.colors.text[0],
+  backgroundColor: theme.colors.neutral[8],
+  cursor: 'pointer',
+  border: 'none',
   '&:hover': {
     backgroundColor: theme.colors.neutral[7]
   },
   '&:active': {
-    backgroundColor: `${theme.colors.neutral[6]}`
+    backgroundColor: theme.colors.neutral[6]
   },
-  '&:focus': {
-    backgroundColor: theme.colors.neutral[8],
-    border: `2px solid ${theme.colors.primary[30]}`
-  }
+  // '&:focus': {
+  //   backgroundColor: theme.colors.neutral[8],
+  //   border: `2px solid ${theme.colors.primary[30]}`
+  // }
 }));
 
 const ButtonWrapper = styled('button')(({ theme }) => ({
@@ -54,15 +62,15 @@ const ButtonWrapper = styled('button')(({ theme }) => ({
   cursor: 'pointer',
   border: 'none',
   '&:hover': {
-    backgroundColor: theme.colors.neutral[6]
+    backgroundColor: theme.colors.neutral[7]
   },
   '&:active': {
-    backgroundColor: theme.colors.neutral[7],
+    backgroundColor: theme.colors.neutral[6],
   },
-  '&:focus': {
-    backgroundColor: theme.colors.neutral[8],
-    border: `2px solid ${theme.colors.primary[30]}`
-  }
+  // '&:focus': {
+  //   backgroundColor: theme.colors.neutral[8],
+  //   border: `2px solid ${theme.colors.primary[30]}`
+  // }
 }));
 const SearchBar = () => {
   const { searchText, setSearchText } = useSearchTextStore(state => state);

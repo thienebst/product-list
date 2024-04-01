@@ -18,6 +18,7 @@ declare module "@mui/material/styles" {
       },
       neutral: {
         1: string,
+        3: string,
         4: string,
         6: string,
         7: string,
@@ -25,6 +26,7 @@ declare module "@mui/material/styles" {
       },
       text: {
         0: string,
+        1: string,
         3: string,
       }
 
